@@ -1,9 +1,12 @@
-package dev.java10x.CadastroDeNinjas;
+package dev.java10x.CadastroDeNinjas.Ninjas;
+import dev.java10x.CadastroDeNinjas.Missoes.MissoesModel;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -12,10 +15,15 @@ public class NinjaModel {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)    
-        Long id;
-        String nome;
-        String email;
-        int idade;
+        private Long id;
+        
+        private String nome;
+        private String email;
+        private int idade;
+
+        @ManyToOne
+        @JoinColumn(name = "missoes_id")
+        private MissoesModel missoes;
 
         public NinjaModel(){}
 
